@@ -5,6 +5,9 @@ import { Badge } from "../components/Badge/Badge";
 const meta: Meta<typeof Badge> = {
   title: "Badge", // Title of the component
   component: Badge, // Component to display in the Docs
+  parameters: {
+    layout: "centered", // Center the component
+  },
 };
 
 export default meta;
@@ -12,5 +15,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => <Badge />,
+  render: () => <Badge>Badge</Badge>,
 };
