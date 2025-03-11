@@ -29,7 +29,7 @@ const Style: React.FC = () => {
         border: 1px solid #ccc; 
         display: grid;
         max-width: calc(550rem / 16);
-        grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-columns:min-content max-content min-content; 
         border-bottom: none;
         border-radius: 0.5rem;
     }
@@ -53,8 +53,8 @@ const Style: React.FC = () => {
 
     .info {
     background: magenta;
-    height: 1ch;
-    width: var(--story-spacing);
+      height: var(--story-spacing);
+        width: var(--story-spacing);
     display: block;
     }
     `}</style>
@@ -76,7 +76,7 @@ export const Default: Story = {
         {["zero", "xs", "sm", "md", "lg", "xl"].map((key) => (
           <React.Fragment key={key}>
             <dt>{key}</dt>
-            <dd style={{ "--story-spacing": `var(--spacing-${key})` }}>
+            <dd style={{ ["--story-spacing" as any]: `var(--spacing-${key})` }}>
               <span>
                 <SpaceCalc value={`--spacing-${key}`} />
               </span>
