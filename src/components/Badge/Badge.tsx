@@ -1,5 +1,7 @@
 import type React from "react";
-import "./Badge.css";
+import root from "react-shadow"; // metodo per css incapsulato
+import css from "./Badge.css?raw";
+// import "./Badge.css";
 
 type BadgeProps = {
   children: React.ReactNode;
@@ -12,8 +14,11 @@ export const Badge: React.FC<BadgeProps> = ({
   ...attrs
 }) => {
   return (
-    <div className={`badge ${variant}`} {...attrs}>
-      {children}
-    </div>
+    <root.div>
+      <style>{css}</style>
+      <div className={`badge ${variant}`} {...attrs}>
+        {children}
+      </div>
+    </root.div>
   );
 };
