@@ -4,6 +4,10 @@ import { Item, type ItemProps } from "./Tabs.Item";
 import { List } from "./Tabs.List";
 import { TabsContext } from "./Tabs.Context";
 import { Tab } from "./Tabs.Tab";
+import root from "react-shadow"; // Importa il componente root da react-shadow
+
+import css from "./Tabs.css?raw";
+import { GlobalStyles } from "../GlobalStyles";
 
 // Controlla se il figlio è un elemento valido
 const isTabValidChildren = (
@@ -43,7 +47,9 @@ export const Tabs: React.FC<TabsProps> & { Item: typeof Item } = ({
 
   // Restituisce il componente Tabs
   return (
-    <div role="tablist">
+    <root.div role="tablist">
+      <GlobalStyles />
+      <style>{css}</style>
       <TabsContext.Provider value={{ activeTab, setActiveTab }}>
         <List tabsLabels={tabsLabels} />
         {validChildren.map(({ id, ...child }) => {
@@ -61,7 +67,7 @@ export const Tabs: React.FC<TabsProps> & { Item: typeof Item } = ({
           return null;
         })}
       </TabsContext.Provider>
-    </div>
+    </root.div>
   );
 };
 

@@ -8,7 +8,7 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "@chromatic-com/storybook",
     "@storybook/experimental-addon-test",
-    "@storybook/addon-a11y",
+    "@storybook/addon-a11y", // Addon per l'accessibilità
   ],
   framework: {
     name: "@storybook/react-vite",
