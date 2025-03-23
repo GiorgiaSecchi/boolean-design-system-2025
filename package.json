@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@storybook/addon-themes": "^8.6.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-shadow": "^20.6.0"
@@ -41,6 +42,7 @@
     "globals": "^15.15.0",
     "playwright": "^1.50.1",
     "storybook": "^8.6.4",
+    "storybook-addon-themes": "^6.1.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",

@@ -36,5 +36,5 @@
 }
 
 [role="tabpanel"] {
-  animation: fadeIn var(--timing-fast) ease-in-out;
+  animation: fadeIn var(--timing) ease-in-out;
 }
