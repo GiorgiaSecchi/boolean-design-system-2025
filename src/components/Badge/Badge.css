@@ -1,6 +1,6 @@
 .badge {
   padding: var(--spacing-xs) var(--spacing-sm);
-  background-color: light-dark(var(--color-gray-1), var(--color-gray-10));
+  background-color: light-dark(var(--color-gray-2), var(--color-gray-5));
   font-size: var(--font-size-xs);
   color: light-dark(var(--color-gray-15), var(--color-gray-0));
   border-radius: 100vw;
@@ -8,9 +8,9 @@
 }
 
 .badge.positive {
-  background-color: light-dark(var(--color-green-2), var(--color-green-10));
+  background-color: light-dark(var(--color-green-2), var(--color-green-9));
 }
 
 .badge.negative {
-  background-color: light-dark(var(--color-red-2), var(--color-red-10));
+  background-color: light-dark(var(--color-red-2), var(--color-red-9));
 }
