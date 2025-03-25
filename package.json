@@ -9,13 +9,15 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "@storybook/addon-themes": "^8.6.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-shadow": "^20.6.0"
+    "react-shadow": "^20.6.0",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",

@@ -7,7 +7,7 @@ const config: StorybookConfig = {
     "@storybook/addon-onboarding",
     "@storybook/addon-docs",
     "@chromatic-com/storybook",
-    "@storybook/experimental-addon-test",
+    "@storybook/experimental-addon-test", // Addon per i test
     "@storybook/addon-a11y", // Addon per l'accessibilità
     "@storybook/addon-themes", // Addon per la gestione dei temi
   ],
