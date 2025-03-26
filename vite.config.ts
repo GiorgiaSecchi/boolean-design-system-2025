@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
 });
 
-//! Da video-lezione per istallare Vitest
+//! Da video-lezione per impostare Vitest
 // // Questa riga sotto importa i tipi di Vitest per abilitare il supporto a IntelliSense e TypeScript.
 // /// <reference types="vitest/config" />
 

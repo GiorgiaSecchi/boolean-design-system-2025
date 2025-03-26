@@ -1,4 +1,4 @@
-//! Da video-lezione per istallare Vitest
+//! Da video-lezione per impostare Vitest
 // import { render } from "@testing-library/react";
 // import "@testing-library/jest-dom";
 

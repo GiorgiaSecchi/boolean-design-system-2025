@@ -1,4 +1,4 @@
-//! Da video-lezione per istallare Vitest
+//! Da video-lezione per impostare Vitest
 // // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // // allows you to do things like:
 // // expect(element).toHaveTextContent(/react/i)
