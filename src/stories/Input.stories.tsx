@@ -17,6 +17,31 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  render: ({ label }) => (
+    <div>
+      <Input label={label} kind="text" />
+      <Input
+        label={label}
+        options={[
+          { label: "Option 1", value: "1" },
+          { label: "Option 2", value: "2" },
+        ]}
+        kind="select"
+      />
+      <Input
+        label={label}
+        options={[
+          { label: "Option 1", value: "1" },
+          { label: "Option 2", value: "2" },
+        ]}
+        kind="radio"
+        name="Nome"
+      />
+    </div>
+  ),
+};
+
+export const InputStory: Story = {
   render: ({ label }) => <Input label={label} kind="text" />,
 };
 

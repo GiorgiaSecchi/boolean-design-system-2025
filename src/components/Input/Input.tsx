@@ -16,6 +16,8 @@
 */
 
 import React from "react";
+import root from "react-shadow";
+import css from "./Input.css?raw";
 
 type InputProps = {
   kind: "text" | "email" | "password";
@@ -59,12 +61,10 @@ export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (
       return (
         <>
           {props.options.map((option) => (
-            <div>
-              <label key={option.value}>
-                <input type="radio" {...props} value={option.value} />
-                {option.label}
-              </label>
-            </div>
+            <label key={option.value}>
+              <input type="radio" {...props} value={option.value} />
+              {option.label}
+            </label>
           ))}
         </>
       );
@@ -77,17 +77,27 @@ type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
   label: React.ReactNode;
 };
 
-export const Input: React.FC<GeneralInputProps> = ({ label, id, ...props }) => {
+export const Input: React.FC<GeneralInputProps> = ({
+  label,
+  id,
+  className,
+  ...props
+}) => {
   const defaultId = React.useId() || id;
 
   return (
     <>
-      {props.kind === "radio" ? (
-        <div>{label}</div>
-      ) : (
-        <label htmlFor={defaultId}>{label}</label>
-      )}
-      <InternalInput {...props} id={defaultId} />
+      <root.div>
+        <style>{css}</style>
+        <div className={`${className ?? ""} container ${props.kind}`}>
+          {props.kind === "radio" ? (
+            <span className="label">{label}</span>
+          ) : (
+            <label htmlFor={defaultId}>{label}</label>
+          )}
+          <InternalInput {...props} id={defaultId} />
+        </div>
+      </root.div>
     </>
   );
 };
