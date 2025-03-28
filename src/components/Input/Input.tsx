@@ -19,15 +19,20 @@ import React from "react";
 import root from "react-shadow";
 import css from "./Input.css?raw";
 import * as Icon from "react-feather";
+import { GlobalStyles } from "../GlobalStyles";
 
 type InputProps = {
   kind: "text" | "email" | "password";
+  icon?: keyof typeof Icon;
+  iconPosition?: "left" | "right";
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 type SelectProps = {
   kind: "select";
   options: { label: string; value: string }[];
   placeholder?: string;
+  icon?: never;
+  iconPosition?: never;
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 
 type RadioProps = {
@@ -35,6 +40,8 @@ type RadioProps = {
   options: { label: string; value: string }[];
   placeholder?: never;
   name: string;
+  icon?: never;
+  iconPosition?: never;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (
@@ -43,20 +50,18 @@ export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (
   switch (props.kind) {
     case "select":
       return (
-        <div>
-          <select {...props}>
-            {props.placeholder && (
-              <option value="" disabled selected>
-                {props.placeholder}
-              </option>
-            )}
-            {props.options.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
+        <select {...props}>
+          {props.placeholder && (
+            <option value="" disabled selected>
+              {props.placeholder}
+            </option>
+          )}
+          {props.options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
       );
     case "radio":
       return (
@@ -76,20 +81,24 @@ export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (
 
 type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
   label: React.ReactNode;
+  icon?: keyof typeof Icon;
 };
 
 export const Input: React.FC<GeneralInputProps> = ({
   label,
   id,
   className,
+  icon,
+  iconPosition,
   ...props
 }) => {
   const defaultId = React.useId() || id;
+  const IconComponent = icon ? Icon[icon] : null;
 
   return (
     <>
       <root.div>
-        <Icon.Camera></Icon.Camera>
+        <GlobalStyles />
         <style>{css}</style>
         <div className={`${className ?? ""} container ${props.kind}`}>
           {props.kind === "radio" ? (
@@ -97,7 +106,15 @@ export const Input: React.FC<GeneralInputProps> = ({
           ) : (
             <label htmlFor={defaultId}>{label}</label>
           )}
-          <InternalInput {...props} id={defaultId} />
+
+          <div className="input-container">
+            <InternalInput {...props} id={defaultId} />
+            {IconComponent && (
+              <div className={`icon ${iconPosition || ""}`}>
+                <IconComponent />
+              </div>
+            )}
+          </div>
         </div>
       </root.div>
     </>

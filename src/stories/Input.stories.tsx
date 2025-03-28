@@ -19,7 +19,13 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: ({ label }) => (
     <div>
-      <Input label={label} kind="text" />
+      <Input
+        label={label}
+        placeholder="Scrivi qui..."
+        iconPosition="left"
+        kind="text"
+        icon="Edit3"
+      />
       <Input
         label={label}
         options={[
@@ -42,7 +48,7 @@ export const Default: Story = {
 };
 
 export const InputStory: Story = {
-  render: ({ label }) => <Input label={label} kind="text" />,
+  render: ({ label }) => <Input icon="Edit3" label={label} kind="text" />,
 };
 
 export const Select: Story = {
