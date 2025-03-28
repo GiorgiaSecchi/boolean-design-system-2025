@@ -14,7 +14,7 @@ export const Badge: React.FC<BadgeProps> = ({
   ...attrs
 }) => {
   return (
-    <root.span>
+    <root.span data-testid="badge-root">
       <GlobalStyles />
       <style>{css}</style>
       <span className={`badge ${variant}`} {...attrs}>

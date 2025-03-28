@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Badge } from "../components/Badge/Badge";
 
-import { within, expect } from "@storybook/test";
+import { within, expect, userEvent, waitFor } from "@storybook/test";
 
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge", // Title of the component
@@ -31,10 +31,28 @@ export const Default: Story = {
   // Test interattivo per controllare se il badge viene renderizzato correttamente
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const badge = await canvas.findByText("Badge");
+
+    // Trova il root del badge
+    const badgeRoot = await canvas.findByTestId("badge-root");
+
+    // Accedi allo Shadow DOM
+    const shadowRoot = badgeRoot.shadowRoot;
+    if (!shadowRoot) throw new Error("Shadow DOM non trovato");
+
+    // Trova l'elemento che contiene il testo dentro lo Shadow DOM
+    const shadowContainer = await waitFor(
+      () => shadowRoot.querySelector(".badge") as HTMLElement
+    );
+
+    // Cerca il testo "Badge" dentro il badge
+    const badge = await within(shadowContainer).findByText("Badge");
 
     // Verifica se il badge è visibile
     expect(badge).toBeVisible();
+
+    // Simula un'azione utente (se applicabile, es: hover)
+    await userEvent.hover(badge);
+    expect(badge).toBeVisible(); // Il badge rimane visibile
   },
 };
 
