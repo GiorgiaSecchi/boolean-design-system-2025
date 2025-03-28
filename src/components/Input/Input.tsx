@@ -18,6 +18,7 @@
 import React from "react";
 import root from "react-shadow";
 import css from "./Input.css?raw";
+import * as Icon from "react-feather";
 
 type InputProps = {
   kind: "text" | "email" | "password";
@@ -88,6 +89,7 @@ export const Input: React.FC<GeneralInputProps> = ({
   return (
     <>
       <root.div>
+        <Icon.Camera></Icon.Camera>
         <style>{css}</style>
         <div className={`${className ?? ""} container ${props.kind}`}>
           {props.kind === "radio" ? (
