@@ -82,6 +82,8 @@ export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (
 type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
   label: React.ReactNode;
   icon?: keyof typeof Icon;
+  errorText?: React.ReactNode; // Error message to display
+  isInvalid?: boolean; // Flag to indicate if the input is invalid
 };
 
 export const Input: React.FC<GeneralInputProps> = ({
@@ -90,6 +92,8 @@ export const Input: React.FC<GeneralInputProps> = ({
   className,
   icon,
   iconPosition,
+  errorText,
+  isInvalid,
   ...props
 }) => {
   const defaultId = React.useId() || id;
@@ -100,13 +104,17 @@ export const Input: React.FC<GeneralInputProps> = ({
       <root.div>
         <GlobalStyles />
         <style>{css}</style>
-        <div className={`${className ?? ""} container ${props.kind}`}>
+        <div
+          className={`
+          ${className ?? ""} container ${props.kind} 
+          ${isInvalid ? "is-invalid" : ""}
+          `}
+        >
           {props.kind === "radio" ? (
             <span className="label">{label}</span>
           ) : (
             <label htmlFor={defaultId}>{label}</label>
           )}
-
           <div className="input-container">
             <InternalInput {...props} id={defaultId} />
             {IconComponent && (
@@ -115,6 +123,7 @@ export const Input: React.FC<GeneralInputProps> = ({
               </div>
             )}
           </div>
+          {errorText && <span className="error-text">{errorText}</span>}
         </div>
       </root.div>
     </>

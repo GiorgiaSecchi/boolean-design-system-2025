@@ -9,6 +9,7 @@ const meta: Meta = {
   },
   args: {
     label: "Label",
+    isInvalid: false, // Default value for isInvalid prop
   },
 };
 
@@ -17,7 +18,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: ({ label }) => (
+  render: ({ label, isInvalid }) => (
     <div>
       <Input
         label={label}
@@ -25,6 +26,8 @@ export const Default: Story = {
         iconPosition="left"
         kind="email"
         icon="Edit3"
+        errorText="Invalid email" // Error message
+        isInvalid={isInvalid} // Flag to indicate if the input is invalid
       />
       <Input
         label={label}

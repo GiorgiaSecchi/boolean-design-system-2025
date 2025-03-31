@@ -79,6 +79,7 @@ select {
 }
 
 /* Reset del focus (input) */
+
 :where(input, select):focus {
   outline: none;
 }
@@ -87,6 +88,21 @@ select {
   outline: 2px solid var(--accent-color);
 }
 
-.container:has(input:user-invalid, select:user-invalid) {
+/* ERROR STATE */
+
+.error-text {
+  color: light-dark(var(--color-red-7), var(--color-red-1));
+  font-size: var(--font-size-sm);
+  margin-top: 0.5em;
+  grid-column: 1/4;
+  display: none;
+}
+
+/* Invalid state (input) */
+.container:where(.is-invalid) {
   --accent-color: var(--color-red-7);
+
+  .error-text {
+    display: block;
+  }
 }
