@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "../components/Input/Input";
-import { AtSign } from "react-feather";
 // import React from "react";
 
 const meta: Meta = {
