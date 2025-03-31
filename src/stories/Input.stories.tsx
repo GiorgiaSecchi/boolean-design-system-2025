@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "../components/Input/Input";
+import { AtSign } from "react-feather";
 // import React from "react";
 
 const meta: Meta = {
@@ -26,7 +27,7 @@ export const Default: Story = {
         placeholder="Scrivi qui..."
         iconPosition="left"
         kind="email"
-        icon="Edit3"
+        icon="AtSign"
         errorText="Invalid email" // Error message
         isInvalid={isInvalid} // Flag to indicate if the input is invalid
         disabled={disabled}
@@ -39,6 +40,7 @@ export const Default: Story = {
           { label: "Option 2", value: "2" },
         ]}
         kind="select"
+        errorText="Invalid selection"
         disabled={disabled}
       />
       <Input
@@ -58,7 +60,17 @@ export const Default: Story = {
 };
 
 export const InputStory: Story = {
-  render: ({ label }) => <Input icon="Edit3" label={label} kind="text" />,
+  render: ({ label, isInvalid, disabled }) => (
+    <Input
+      label={label}
+      kind="text"
+      icon="AtSign"
+      iconPosition="left"
+      errorText="Invalid email"
+      isInvalid={isInvalid}
+      disabled={disabled}
+    />
+  ),
 };
 
 export const Select: Story = {
