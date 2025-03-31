@@ -23,7 +23,7 @@ export const Default: Story = {
         label={label}
         placeholder="Scrivi qui..."
         iconPosition="left"
-        kind="text"
+        kind="email"
         icon="Edit3"
       />
       <Input
